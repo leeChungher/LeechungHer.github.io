@@ -1,26 +1,27 @@
-<!-- 檔名: index.html -->
-
+<!--
+路徑 : /
+檔名 : index.html
+功能 : 系統入口，載入主控制器 app.js
+最後修改時間: 2025-08-30 08:16:00
+-->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  <link rel="icon" href="data:,">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>元件展示平台</title>
-
-  <!-- 全站樣式 -->
-  <link rel="stylesheet" href="css/global.css" />
-
-  <!-- Demo 排版樣式 -->
-  <link rel="stylesheet" href="js/demo/layout.css" />
-  <link rel="stylesheet" href="js/demo/demo.css" />
+  <title>辛區資訊系統</title>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 移除 link rel="stylesheet" 由 JS 載入 -->
 </head>
-<body>
-  <!-- Demo 主結構 -->
-  <div id="app">
-    <!-- js/demo/layout.html 將插入這裡 -->
-  </div>
 
-  <!-- 系統啟動器 -->
-  <script type="module" src="js/main.js"></script>
+<body>
+<center>
+  <div id="root"></div>
+</center>
+  <script src="app.js"></script>
 </body>
 </html>
