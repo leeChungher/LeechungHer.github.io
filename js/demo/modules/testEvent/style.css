@@ -1,0 +1,14 @@
+.event-test {
+  padding: 2rem;
+  text-align: center;
+}
+
+#event-btn {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
