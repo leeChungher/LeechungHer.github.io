@@ -1,0 +1,9 @@
+{
+  "title": "首頁宣告設定",
+  "delegate": {
+    "event": "doc:load",
+    "payload": {
+      "file": "home-doc.json"
+    }
+  }
+}

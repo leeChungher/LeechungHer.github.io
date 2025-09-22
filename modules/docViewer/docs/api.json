@@ -1,0 +1,6 @@
+{
+  "module": "dialog",
+  "subscriptions": [
+    { "event": "dialog:show", "handler": "renderDialog" }
+  ]
+}

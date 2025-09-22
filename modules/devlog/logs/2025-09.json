@@ -1,0 +1,27 @@
+{
+  "title": "2025 年 9 月開發日誌",
+  "entries": [
+    {
+      "date": "2025-09-01",
+      "title": "建立 eventBus 初版",
+      "notes": [
+        "完成 delegate / subscribe API",
+        "支援前後端一致事件格式"
+      ],
+      "collapsed": true
+    },
+    {
+      "date": "2025-09-10",
+      "title": "加入 Dialog 模組",
+      "notes": [
+        "支援無按鈕 / 單按鈕 / 雙按鈕互動",
+        "加入動畫、背光、RWD、美化"
+      ],
+      "fileLinks": [
+        { "label": "Dialog 規格書", "file": "spec-dialog.json" },
+        { "label": "UI 設計圖", "file": "ui-dialog.json" }
+      ],
+      "collapsed": false
+    }
+  ]
+}
