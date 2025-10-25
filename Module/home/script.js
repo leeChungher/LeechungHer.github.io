@@ -51,9 +51,16 @@ class Home extends EventBus {
         App.navigateTo('Module/Auth/index.html');
     }
 
-    handleModuleNavigation(module) {
-        const path = `/Module/${module}/index.html`;
-        App.loadModule(path);
+    async handleModuleNavigation(module) {
+        try {
+            const path = `/Module/${module}/index.html`;
+            Base.log(`正在導航到模組: ${module}`, 'info');
+            await App.loadModule(path);
+            Base.log(`成功載入模組: ${module}`, 'info');
+        } catch (error) {
+            console.error('模組導航失敗:', error);
+            Base.log(`模組導航失敗: ${error.message}`, 'error');
+        }
     }
 }
 

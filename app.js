@@ -29,6 +29,8 @@ class App extends EventBus {
 
     async loadModule(path) {
         try {
+            Base.log(`開始載入模組: ${path}`, 'info');
+
             const response = await fetch(path, {
                 headers: {
                     'Accept-Charset': 'UTF-8',
@@ -46,6 +48,8 @@ class App extends EventBus {
             // 檢查並載入相應的腳本
             const modulePath = path.replace('/index.html', '');
             const scriptPath = `${modulePath}/script.js`;
+            
+            Base.log(`載入模組腳本: ${scriptPath}`, 'info');
             
             // 移除舊的腳本
             const oldScript = this.moduleContainer.querySelector(`script[src="${scriptPath}"]`);
