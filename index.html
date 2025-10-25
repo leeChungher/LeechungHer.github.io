@@ -1,16 +1,16 @@
-<!--
-  路徑: ./index.html
-  檔名: index.html
-  功能: 系統入口，載入 app.js
-  修改日期: 20250922
--->
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>模組化系統</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code 掃描器</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
-  <script type="module" src="./app.js"></script>
+  <h1>📷 QR Code 掃描器</h1>
+  <div id="reader"></div>
+  <div id="result">掃描結果會顯示在這裡</div>
+  <script src="script.js"></script>
 </body>
 </html>
