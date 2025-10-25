@@ -1,127 +1,84 @@
 /**
  * 路徑: ./app.js
  * 檔名: app.js
- * 功能: 應用程式核心邏輯
+ * 功能: 應用程式主要邏輯
  * 修改日期: 20251025
  */
-import { EventBus } from './eventBus.js';
-import ControlCenter from './Core/ControlCenter.js';
-import Base from './Utils/Base.js';
 
-// 全局事件匯流排
-window.eventBus = new EventBus();
+import { Router } from '/Core/Router.js';
+import { EventBus } from '/eventBus.js';
+import Base from '/Utils/Base.js';
 
-// 模組配置
-const AppConfig = {
-    version: '1.0.0',
-    modules: [
-        {
-            name: 'auth',
-            path: './Modules/Auth/',
-            required: true
-        },
-        {
-            name: 'home',
-            path: './Modules/Home/',
-            required: true
-        },
-        {
-            name: 'dialog',
-            path: './Modules/Dialog/',
-            required: false
-        },
-        {
-            name: 'qrcode',
-            path: './Modules/QRCode/',
-            required: false
-        }
-    ]
-};
-
-class App {
+class App extends EventBus {
     constructor() {
-        this.config = AppConfig;
-        this.loadedModules = new Set();
-        this.init();
+        super();
+        this.router = new Router();
+        this.moduleContainer = document.getElementById('app');
+        this.initialize();
     }
 
-    async init() {
+    initialize() {
+        // 初始化路由器
+        this.router.initialize(this.loadModule.bind(this));
+
+        // 註冊事件監聽
+        this.subscribe('module:navigate', (data) => {
+            this.router.navigate(data.path);
+        });
+    }
+
+    async loadModule(path) {
         try {
-            // 初始化核心組件
-            await this.initializeCore();
+            const response = await fetch(path, {
+                headers: {
+                    'Accept-Charset': 'UTF-8',
+                    'Content-Type': 'text/html; charset=UTF-8'
+                }
+            });
             
-            // 載入必要模組
-            await this.loadRequiredModules();
-            
-            // 設定全局錯誤處理
-            this.setupErrorHandling();
-            
-            Base.log('應用程式初始化完成', 'info');
-        } catch (error) {
-            Base.log('應用程式初始化失敗: ' + error.message, 'error');
-        }
-    }
-
-    async initializeCore() {
-        // 註冊核心事件監聽器
-        ControlCenter.on('module:loaded', (data) => {
-            this.loadedModules.add(data.name);
-            Base.log(`模組載入完成: ${data.name}`, 'info');
-        });
-
-        // 監聽驗證狀態
-        ControlCenter.on('auth:logout', () => {
-            sessionStorage.clear();
-            window.location.href = '/Modules/Auth/index.html';
-        });
-    }
-
-    async loadRequiredModules() {
-        const requiredModules = this.config.modules.filter(m => m.required);
-        
-        for (const module of requiredModules) {
-            try {
-                await this.loadModule(module);
-            } catch (error) {
-                Base.log(`模組載入失敗 ${module.name}: ${error.message}`, 'error');
-                throw error;
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        }
-    }
+            
+            const content = await response.text();
+            this.moduleContainer.innerHTML = content;
 
-    async loadModule({ name, path }) {
-        try {
-            // 載入模組設定
-            const config = await fetch(`${path}config.json`).then(res => res.json());
+            // 檢查並載入相應的腳本
+            const modulePath = path.replace('/index.html', '');
+            const scriptPath = `${modulePath}/script.js`;
             
-            // 載入模組腳本
-            await import(`${path}index.js`);
-            
-            // 發送模組載入完成事件
-            ControlCenter.emit('module:loaded', { name, config });
-            
+            // 移除舊的腳本
+            const oldScript = this.moduleContainer.querySelector(`script[src="${scriptPath}"]`);
+            if (oldScript) {
+                oldScript.remove();
+            }
+
+            // 載入新的腳本
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = scriptPath;
+            this.moduleContainer.appendChild(script);
+
+            this.delegate('module:loaded', { path });
+            Base.log(`模組載入成功: ${path}`, 'info');
         } catch (error) {
-            throw new Error(`模組載入失敗 ${name}: ${error.message}`);
+            console.error('Module loading failed:', error);
+            this.moduleContainer.innerHTML = '<div class="error-message">載入失敗</div>';
+            this.delegate('module:error', { path, error });
+            Base.log(`模組載入失敗: ${path}`, 'error');
         }
     }
 
-    setupErrorHandling() {
-        window.onerror = (msg, url, lineNo, columnNo, error) => {
-            Base.log('全局錯誤:', {
-                message: msg,
-                url: url,
-                line: lineNo,
-                column: columnNo,
-                error: error
-            }, 'error');
-            return false;
-        };
+    // 取得當前路徑
+    getCurrentPath() {
+        return this.router.currentPath;
+    }
 
-        window.addEventListener('unhandledrejection', (event) => {
-            Base.log('未處理的 Promise 拒絕:', event.reason, 'error');
-        });
+    // 導航到指定路徑
+    navigateTo(path) {
+        this.router.navigate(path);
     }
 }
 
-// 啟動應用程式
-window.app = new App();
+// 導出單例
+export default new App();

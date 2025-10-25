@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>側邊欄</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../../assets/logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">系統選單</span>
+        </div>
+
+        <button id="toggleBtn" class="toggle-btn">
+            <span class="toggle-icon">≡</span>
+        </button>
+
+        <nav class="menu">
+            <ul>
+                <li data-path="../Home/index.html" class="active">
+                    <i class="menu-icon">🏠</i>
+                    <span class="menu-text">首頁</span>
+                </li>
+                <li data-path="../QRCode/index.html">
+                    <i class="menu-icon">📷</i>
+                    <span class="menu-text">QR Code</span>
+                </li>
+                <li data-path="../Dialog/index.html">
+                    <i class="menu-icon">💬</i>
+                    <span class="menu-text">對話框</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="user-profile">
+            <img src="../../assets/avatar.png" alt="User" class="avatar">
+            <div class="user-info">
+                <span class="username">使用者</span>
+                <button id="logoutBtn" class="logout-btn">登出</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
