@@ -44,6 +44,13 @@ body {
 .loading-text {
     color: #2c3e50;
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.version-text {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    font-family: monospace;
 }
 
 /* 錯誤訊息樣式 */
