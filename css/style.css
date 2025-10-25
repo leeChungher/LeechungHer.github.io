@@ -45,3 +45,32 @@ body {
     color: #2c3e50;
     font-size: 1.2rem;
 }
+
+/* 錯誤訊息樣式 */
+.error-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 5px;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.error-item {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.error-time {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+.error-text {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    font-family: monospace;
+}

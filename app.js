@@ -5,9 +5,9 @@
  * 修改日期: 20251025
  */
 
-import { Router } from '/Core/Router.js';
-import { EventBus } from '/eventBus.js';
-import Base from '/Utils/Base.js';
+import { Router } from './Core/Router.js';
+import { EventBus } from './eventBus.js';
+import Base from './Utils/Base.js';
 
 class App extends EventBus {
     constructor() {
