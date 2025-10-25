@@ -13,7 +13,34 @@ class Loader {
 
     init() {
         document.addEventListener('DOMContentLoaded', () => {
+            this.loadStyles();
             this.checkAuthAndRedirect();
+        });
+    }
+
+    loadStyles() {
+        // 載入全局樣式
+        const styles = [
+            '/css/style.css',
+            // 可以在這裡添加更多需要的樣式文件
+        ];
+
+        styles.forEach(href => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = href;
+            
+            // 監聽樣式載入狀態
+            link.onload = () => {
+                console.log(`樣式載入成功: ${href}`);
+            };
+            
+            link.onerror = () => {
+                console.error(`樣式載入失敗: ${href}`);
+            };
+            
+            document.head.appendChild(link);
         });
     }
 
