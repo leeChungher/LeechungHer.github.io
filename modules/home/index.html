@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="home-container">
+        <header class="main-header">
+            <h1>歡迎使用系統</h1>
+            <div class="user-info">
+                <span id="username"></span>
+                <button id="logoutBtn">登出</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="module-grid">
+                <div class="module-card" data-module="qrcode">
+                    <i class="module-icon">📷</i>
+                    <h3>QR Code 掃描</h3>
+                    <p>掃描並解析 QR Code</p>
+                </div>
+                
+                <div class="module-card" data-module="dialog">
+                    <i class="module-icon">💬</i>
+                    <h3>對話框測試</h3>
+                    <p>測試各種對話框功能</p>
+                </div>
+                
+                <!-- 可以根據需要添加更多功能卡片 -->
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>© 2025 管理系統</p>
+        </footer>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html>

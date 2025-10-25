@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統登入</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="logo">
+                    <img src="../../assets/logo.png" alt="Logo" class="logo-img">
+                </div>
+                <h1>系統登入</h1>
+                <p class="welcome-text">請輸入您的帳號密碼</p>
+            </div>
+            <div class="auth-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="icon">👤</i>
+                            帳號
+                        </label>
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               required 
+                               autocomplete="username"
+                               placeholder="請輸入帳號">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="icon">🔒</i>
+                            密碼
+                        </label>
+                        <div class="password-input">
+                            <input type="password" 
+                                   id="password" 
+                                   name="password" 
+                                   required 
+                                   autocomplete="current-password"
+                                   placeholder="請輸入密碼">
+                            <button type="button" id="togglePassword" class="toggle-password">
+                                👁
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group remember-me">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span class="checkbox-text">記住我</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="login-btn">
+                            <span class="btn-text">登入</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="auth-footer">
+                <div class="quick-login">
+                    <p>快速登入：</p>
+                    <div class="account-buttons">
+                        <button type="button" data-account="admin" class="quick-btn admin">管理員</button>
+                        <button type="button" data-account="user1" class="quick-btn user">使用者</button>
+                        <button type="button" data-account="guest" class="quick-btn guest">訪客</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="version-info">
+            Version 1.0.0 | © 2025 All Rights Reserved
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

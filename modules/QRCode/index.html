@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code 掃描器</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📷 QR Code 掃描器</h1>
+        </header>
+        
+        <main>
+            <div class="scanner-container">
+                <div id="reader"></div>
+                <div class="controls">
+                    <button id="startButton" class="btn">開始掃描</button>
+                    <button id="stopButton" class="btn" disabled>停止掃描</button>
+                </div>
+            </div>
+            
+            <div class="result-container">
+                <h2>掃描結果</h2>
+                <div id="result" class="result-box">等待掃描...</div>
+                <div class="history">
+                    <h3>歷史記錄</h3>
+                    <ul id="scanHistory"></ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 QR Code 掃描器</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

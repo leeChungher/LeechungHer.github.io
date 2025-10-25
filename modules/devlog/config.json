@@ -1,6 +1,0 @@
-{
-  "module": "devlog",
-  "subscriptions": [
-    { "event": "devlog:load", "handler": "loadLog" }
-  ]
-}
