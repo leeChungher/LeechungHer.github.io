@@ -28,7 +28,7 @@ class Loader {
                     await this.app.loadModule('/Module/home/index.html');
                 } else {
                     // 未登入，載入登入頁內容
-                    await this.app.loadModule('/Module/Auth/index.html');
+                    await this.app.loadModule('/Module/auth/index.html');
                 }
             } catch (error) {
                 console.error('導航失敗:', error);
