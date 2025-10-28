@@ -1,88 +1,43 @@
 /**
- * 路徑: ./app.js
- * 檔名: app.js
- * 功能: 應用程式主要邏輯
- * 修改日期: 20251025
+ * 檔案：app.js
+ * 功能：主程式，建立 main 容器、載入全域樣式與模組
+ * 作者：李
+ * 日期：2025-10-28
  */
+import { createLayout } from './layout.js';
+import { ModuleLoader } from './loadModules.js';
 
-import { Router } from './Core/Router.js';
-import { EventBus } from './eventBus.js';
-import Base from './Utils/Base.js';
+console.log('[App] 載入 style.css');
+const globalStyle = document.createElement('link');
+globalStyle.rel = 'stylesheet';
+globalStyle.href = './style.css';
+document.head.appendChild(globalStyle);
 
-class App extends EventBus {
-    constructor() {
-        super();
-        this.router = new Router();
-        this.moduleContainer = document.getElementById('app');
-        this.initialize();
-    }
+console.log('[App] 建立頁面結構');
+createLayout();
 
-    initialize() {
-        // 初始化路由器
-        this.router.initialize(this.loadModule.bind(this));
+// ToolBar 插入 header（只載入一次）
+console.log('[App] 載入 toolbar 到 header');
+const headerLoader = new ModuleLoader('#header');
+headerLoader.load('./modules/toolbar.json');
 
-        // 註冊事件監聽
-        this.subscribe('module:navigate', (data) => {
-            this.router.navigate(data.path);
-        });
-    }
+// 初始化 main 模組載入器
+console.log('[App] 初始化 main 模組載入器');
+const mainLoader = new ModuleLoader('#main');
+mainLoader.loadToMain('./modules/home.json');
 
-    async loadModule(path) {
-        try {
-            Base.log(`開始載入模組: ${path}`, 'info');
-
-            const response = await fetch(path, {
-                headers: {
-                    'Accept-Charset': 'UTF-8',
-                    'Content-Type': 'text/html; charset=UTF-8'
-                }
-            });
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const content = await response.text();
-            this.moduleContainer.innerHTML = content;
-
-            // 檢查並載入相應的腳本
-            const modulePath = path.replace('/index.html', '');
-            const scriptPath = `${modulePath}/script.js`;
-            
-            Base.log(`載入模組腳本: ${scriptPath}`, 'info');
-            
-            // 移除舊的腳本
-            const oldScript = this.moduleContainer.querySelector(`script[src="${scriptPath}"]`);
-            if (oldScript) {
-                oldScript.remove();
-            }
-
-            // 載入新的腳本
-            const script = document.createElement('script');
-            script.type = 'module';
-            script.src = scriptPath;
-            this.moduleContainer.appendChild(script);
-
-            this.delegate('module:loaded', { path });
-            Base.log(`模組載入成功: ${path}`, 'info');
-        } catch (error) {
-            console.error('Module loading failed:', error);
-            this.moduleContainer.innerHTML = '<div class="error-message">載入失敗</div>';
-            this.delegate('module:error', { path, error });
-            Base.log(`模組載入失敗: ${path}`, 'error');
-        }
-    }
-
-    // 取得當前路徑
-    getCurrentPath() {
-        return this.router.currentPath;
-    }
-
-    // 導航到指定路徑
-    navigateTo(path) {
-        this.router.navigate(path);
-    }
-}
-
-// 導出單例
-export default new App();
+// 綁定 ToolBar 按鈕事件
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'homeBtn') {
+    console.log('[ToolBar] 點擊首頁');
+    mainLoader.loadToMain('./modules/home.json');
+  }
+  if (e.target.id === 'aboutBtn') {
+    console.log('[ToolBar] 點擊關於');
+    mainLoader.loadToMain('./modules/about.json');
+  }
+  if (e.target.id === 'copilotBtn') {
+    console.log('[ToolBar] 點擊 Copilot 聊天');
+    mainLoader.loadToMain('./modules/copilot.json');
+  }
+});
