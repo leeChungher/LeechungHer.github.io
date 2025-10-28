@@ -11,14 +11,20 @@ export class ModuleLoader {
     this.injectJs(moduleData.js);
   }
 
-  async loadToMain(path) {
+ async loadToMain(path) {
+  try {
     const response = await fetch(path);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const moduleData = await response.json();
     this.container.innerHTML = '';
     this.injectHtml(moduleData.html);
     this.injectCss(moduleData.css);
     this.injectJs(moduleData.js);
+  } catch (error) {
+    console.error(`[ModuleLoader] 模組載入失敗：${path}`, error);
+    this.container.innerHTML = `<section class="error"><h2>載入失敗</h2><p>${error.message}</p></section>`;
   }
+}
 
   injectHtml(html) {
     this.container.insertAdjacentHTML('beforeend', html);
