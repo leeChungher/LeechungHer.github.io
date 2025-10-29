@@ -1,6 +1,0 @@
-{
-  "name": "about",
-  "html": "<section class='about'><h2>關於我們</h2><p>本系統由李設計，採用模組化架構。</p></section>",
-  "css": ".about { padding: 2rem; font-family: sans-serif; background-color: #f5f5f5; color: #333; }",
-  "js": "console.log('About 模組已載入');"
-}
