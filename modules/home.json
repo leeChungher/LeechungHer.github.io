@@ -1,0 +1,6 @@
+{
+  "name": "home",
+  "html": "<section class='home'>\n  <h1>歡迎來到首頁</h1>\n  <p>這是首頁模組的內容。</p>\n</section>",
+  "css": ".home {\n  padding: 2rem;\n  font-family: sans-serif;\n  background: url('../assets/bg.jpg') center/cover no-repeat;\n  color: white;\n}",
+  "js": "console.log('Home 模組已載入');\ndocument.querySelector('h1').addEventListener('click', () => {\n  alert('你點了首頁標題！');\n});"
+}

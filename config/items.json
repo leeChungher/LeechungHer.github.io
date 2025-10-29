@@ -1,8 +1,0 @@
-{
-  "items": [
-    { "label": "首頁", "page": "home" },
-    { "label": "關於我們", "page": "about" },
-    { "label": "測試頁面", "page": "test" },
-    { "label": "Copilot 聊天", "page": "copilot" }
-  ]
-}

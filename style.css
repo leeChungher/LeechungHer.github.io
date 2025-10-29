@@ -1,148 +1,22 @@
-/* 全頁背景圖樣式 */
-body.full-bg {
+html, body {
   margin: 0;
   padding: 0;
-  background: url('./assets/bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-body.full-bg::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* 可選：加深文字可讀性 */
-  z-index: -1;
-}
-
-/* 主容器排版 */
-main#main {
-  padding: 2rem;
-  max-width: 960px;
-  margin: auto;
-}
-
-/* 側欄樣式 */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: -240px;
-  width: 240px;
   height: 100%;
-  background: #222;
-  color: white;
-  transition: left 0.3s ease;
-  z-index: 1000;
-  overflow-y: auto;
+  background-color: #f5f5f5;
 }
 
-#sidebar.active {
-  left: 0;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-#sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+main {
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-#sidebar nav ul li {
-  border-bottom: 1px solid #444;
-}
-
-#sidebar nav ul li a {
-  display: block;
-  padding: 1rem;
-  color: white;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-#sidebar nav ul li a:hover {
-  background: #333;
-}
-
-#sidebar nav ul li a.active {
-  background: #007bff;
-  font-weight: bold;
-}
-
-/* 遮罩 */
-#overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: none;
-}
-
-#overlay.active {
-  display: block;
-}
-
-/* 標題與段落 */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* RWD 響應式設計 */
-@media (max-width: 768px) {
-  main#main {
-    padding: 1rem;
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  #sidebar {
-    width: 200px;
-    left: -200px;
-  }
-
-  #sidebar.active {
-    left: 0;
-  }
-
-  #sidebar nav ul li a {
-    padding: 0.8rem;
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 480px) {
-  main#main {
-    padding: 0.5rem;
-  }
-
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-  }
-
-  #sidebar {
-    width: 180px;
-    left: -180px;
-  }
-
-  #sidebar nav ul li a {
-    padding: 0.6rem;
-    font-size: 0.9rem;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
 }

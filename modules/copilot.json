@@ -1,0 +1,6 @@
+{
+  "name": "copilot",
+  "html": "<section class='copilot'>\n  <h2>加入 Copilot 聊天</h2>\n  <p>點擊下方按鈕即可開啟 Copilot 群組聊天：</p>\n  <button onclick=\"window.open('https://copilot.microsoft.com/conversations/join/oXuDUjXwc8DBx67czuEG2', '_blank')\">加入聊天</button>\n</section>",
+  "css": ".copilot {\n  min-height: 100vh;\n  background-color: #e0f7fa;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  font-family: sans-serif;\n  color: #006064;\n  padding: 2rem;\n}\n.copilot button {\n  background-color: #00796b;\n  color: white;\n  border: none;\n  padding: 0.75rem 1.5rem;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 1rem;\n}\n.copilot button:hover {\n  background-color: #004d40;\n}",
+  "js": "console.log('Copilot 聊天模組已載入');"
+}
