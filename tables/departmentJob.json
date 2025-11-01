@@ -1,0 +1,27 @@
+{
+  "tableName": "departmentJob",
+  "zh": "部門職稱對應表",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 7 },
+    {
+      "key": "departmentCode",
+      "zh": "部門代碼",
+      "type": "string",
+      "source": { "table": "department", "field": "code" }
+    },
+    {
+      "key": "jobCode",
+      "zh": "職稱代碼",
+      "type": "string",
+      "source": { "table": "job", "field": "code" }
+    }
+  ],
+  "data": [
+    { "id": 1, "departmentCode": "R&D", "jobCode": "Engineer" },
+    { "id": 2, "departmentCode": "R&D", "jobCode": "ProductManager" },
+    { "id": 3, "departmentCode": "Design", "jobCode": "Designer" },
+    { "id": 4, "departmentCode": "Design", "jobCode": "MarketingLead" },
+    { "id": 5, "departmentCode": "Product", "jobCode": "ProductManager" },
+    { "id": 6, "departmentCode": "Marketing", "jobCode": "MarketingLead" }
+  ]
+}

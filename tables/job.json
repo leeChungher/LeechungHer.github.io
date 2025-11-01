@@ -1,0 +1,15 @@
+{
+  "tableName": "job",
+  "zh": "職稱",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 5 },
+    { "key": "code", "zh": "代碼", "type": "string" },
+    { "key": "name", "zh": "職稱名稱", "type": "string" }
+  ],
+  "data": [
+    { "id": 1, "code": "Engineer", "name": "工程師" },
+    { "id": 2, "code": "Designer", "name": "設計師" },
+    { "id": 3, "code": "ProductManager", "name": "產品經理" },
+    { "id": 4, "code": "MarketingLead", "name": "行銷主管" }
+  ]
+}

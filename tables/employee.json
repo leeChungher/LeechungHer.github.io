@@ -1,0 +1,17 @@
+{
+  "tableName": "employee",
+  "zh": "員工資料表",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 4 },
+    { "key": "name", "zh": "姓名", "type": "string" },
+    { "key": "age", "zh": "年齡", "type": "number" },
+    { "key": "sex", "zh": "性別", "type": "string", "source": { "table": "sex", "field": "name" } },
+    { "key": "job", "zh": "職稱", "type": "string", "source": { "table": "job", "field": "name" } },
+    { "key": "department", "zh": "部門", "type": "string", "source": { "table": "department", "field": "name" } }
+  ],
+  "data": [
+    { "id": 1, "name": "小明", "age": 25, "sex": "乾", "job": "工程師", "department": "研發部" },
+    { "id": 2, "name": "小美", "age": 12, "sex": "女", "job": "設計師", "department": "設計部" },
+    { "id": 3, "name": "阿強", "age": 15, "sex": "童", "job": "產品經理", "department": "產品部" }
+  ]
+}

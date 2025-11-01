@@ -1,0 +1,16 @@
+{
+  "tableName": "sex",
+  "zh": "性別",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 5 },
+    { "key": "code", "zh": "代碼", "type": "string" },
+    { "key": "name", "zh": "性別", "type": "string" },
+    { "key": "descript", "zh": "描述", "type": "string" }
+  ],
+  "data": [
+    { "id": 1, "code": "M", "name": "乾", "descript": "男性 >= 16歲" },
+    { "id": 2, "code": "m", "name": "童", "descript": "男性 < 16歲" },
+    { "id": 3, "code": "F", "name": "坤", "descript": "女性 >= 14歲" },
+    { "id": 4, "code": "f", "name": "女", "descript": "女性 < 14歲" }
+  ]
+}

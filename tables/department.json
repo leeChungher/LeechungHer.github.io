@@ -1,0 +1,15 @@
+{
+  "tableName": "department",
+  "zh": "部門",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 5 },
+    { "key": "code", "zh": "代碼", "type": "string" },
+    { "key": "name", "zh": "部門名稱", "type": "string" }
+  ],
+  "data": [
+    { "id": 1, "code": "R&D", "name": "研發部" },
+    { "id": 2, "code": "Design", "name": "設計部" },
+    { "id": 3, "code": "Product", "name": "產品部" },
+    { "id": 4, "code": "Marketing", "name": "行銷部" }
+  ]
+}

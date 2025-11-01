@@ -1,0 +1,17 @@
+{
+  "tableName": "tables",
+  "zh": "資料總表",
+  "header": [
+    { "key": "id", "zh": "序號", "type": "int", "autoIncrement": true, "nextId": 7 },
+    { "key": "code", "zh": "代碼", "type": "string" },
+    { "key": "name", "zh": "資料表", "type": "string" }
+  ],
+  "data": [
+    { "id": 1, "code": "tables", "name": "資料總表" },
+    { "id": 2, "code": "employee", "name": "員工資料表" },
+    { "id": 3, "code": "sex", "name": "性別表" },
+    { "id": 4, "code": "job", "name": "職稱表" },
+    { "id": 5, "code": "department", "name": "部門表" },
+    { "id": 6, "code": "departmentJob", "name": "部門職稱對應表" }
+  ]
+}

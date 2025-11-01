@@ -1,31 +1,60 @@
-<!--
-  路徑: ./
-  檔名: index.html
-  功能: 應用程式入口頁面，載入主程式並初始化 PWA 設定
-  修改日期: 2025-10-28
--->
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>資訊系統 Version:1.0.1</title>
-
-  <!-- ✅ PWA 設定 -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#4CAF50" />
-
-  <!-- ✅ 網頁圖示 -->
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="assets/logo.png" />
-
-  <!-- ✅ 快取控制（可選） -->
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+  <title>資料表管理系統</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@13.0.0/dist/handsontable.full.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/handsontable@13.0.0/dist/handsontable.full.min.js"></script>
 </head>
 <body>
-  <script type="module" src="app.js?v=1.0.1"></script>
+  <div id="header">
+    <button id="menuBtn">☰</button>
+    <h1>資料表管理系統</h1>
+  </div>
+
+  <div id="sidebar">
+    <ul>
+      <li data-page="tables">📋 資料總表</li>
+      <li class="has-submenu">👤 員工管理
+        <ul class="submenu">
+          <li data-page="employee">員工資料表</li>
+        </ul>
+      </li>
+      <li class="has-submenu">📚 基礎資料
+        <ul class="submenu">
+          <li data-page="sex">性別表</li>
+          <li data-page="job">職稱表</li>
+          <li data-page="department">部門表</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div id="overlay"></div>
+
+  <div id="main">
+    <h2 id="pageTitle">📋 資料表管理</h2>
+    <div id="headerTable"></div>
+    <button id="saveHeaderBtn">💾 儲存欄位設定</button>
+    <div id="dataTable"></div>
+  </div>
+
+  <div id="footerBtn">
+    <button id="backBtn" onclick="renderTable('tables')">🔙 返回資料總表</button>
+  </div>
+
+  <!-- JavaScript modules -->
+  <script src="sidebar.js"></script>
+  <script src="datasets.js"></script>
+  <script src="tableviewer.js"></script>
+
+  <!-- 初始化主表 -->
+  <script>
+    window.onload = () => {
+      renderTable('tables');
+    };
+  </script>
 </body>
 </html>
