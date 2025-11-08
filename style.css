@@ -1,13 +1,11 @@
-@import url('variables.css');
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: sans-serif;
   overflow-x: hidden;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: #f5f5f5;
+  color: #1a1a1a;
 }
 
 /* TopBar */
@@ -17,8 +15,8 @@ html, body {
   justify-content: space-between;
   padding: 0 16px;
   height: 50px;
-  background: var(--color-sidebar-header);
-  color: var(--color-white);
+  background: #444444;
+  color: #ffffff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 980;
 }
@@ -43,40 +41,40 @@ html, body {
 }
 
 .top-bar-right button {
-  background: var(--color-toolbar-btn);
+  background: #cccccc;
   border: none;
   padding: 4px 10px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: var(--font-size-small);
-  color: var(--color-text);
+  font-size: 13px;
+  color: #1a1a1a;
   white-space: nowrap;
 }
 
 .top-bar-right button:hover {
-  background: var(--color-toolbar-btn-hover);
-  text-shadow: var(--hover-shadow-dark);
+  background: #aaaaaa;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
-  left: calc(-1 * var(--sidebar-width));
-  width: var(--sidebar-width);
+  left: -250px;
+  width: 250px;
   height: 100%;
-  background: var(--color-sidebar);
-  color: var(--color-white);
+  background: #2e2e2e;
+  color: #ffffff;
   z-index: 1000;
-  transition: left var(--transition-medium);
+  transition: left 0.3s ease;
   box-shadow: 2px 0 8px rgba(0,0,0,0.2);
 }
 
 .sidebar-header {
   padding: 15px 20px;
   font-size: 18px;
-  background: var(--color-sidebar-header);
-  border-bottom: 1px solid var(--color-border-dark);
+  background: #444444;
+  border-bottom: 1px solid #888888;
 }
 
 .sidebar-fixed,
@@ -92,16 +90,16 @@ html, body {
   align-items: center;
   gap: 10px;
   padding: 15px 20px;
-  border-bottom: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid #888888;
   cursor: pointer;
-  font-size: var(--font-size-base);
-  color: var(--color-white);
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .sidebar-fixed li:hover span,
 .sidebar-dynamic li:hover span {
-  text-shadow: var(--hover-shadow-light);
-  transition: text-shadow var(--transition-fast);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  transition: text-shadow 0.2s ease;
 }
 
 .sidebar-fixed li i,
@@ -114,17 +112,17 @@ html, body {
 /* FloatingBar */
 .floating-bar {
   position: fixed;
-  bottom: calc(var(--footer-height) + 10px);
+  bottom: 90px;
   right: 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   z-index: 920;
-  background: var(--color-white);
+  background: #ffffff;
   padding: 8px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: opacity var(--transition-medium), transform var(--transition-medium);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .floating-bar.hidden {
@@ -134,17 +132,17 @@ html, body {
 }
 
 .floating-bar button {
-  background: var(--color-toolbar-btn);
+  background: #cccccc;
   border: none;
   padding: 6px 12px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: var(--font-size-small);
+  font-size: 13px;
   white-space: nowrap;
 }
 
 .floating-bar button:hover {
-  background: var(--color-toolbar-btn-hover);
+  background: #aaaaaa;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -152,7 +150,7 @@ html, body {
 .main {
   padding-top: 0;
   margin-top: 0;
-  padding-bottom: var(--footer-height);
+  padding-bottom: 80px;
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
@@ -174,7 +172,7 @@ html, body {
 .page {
   display: none;
   padding: 0 20px 20px 20px;
-  min-height: calc(100vh - var(--footer-height));
+  min-height: calc(100vh - 80px);
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(10px);
@@ -203,12 +201,12 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: var(--footer-height);
-  background: var(--color-footer);
+  height: 80px;
+  background: #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid #cccccc;
   z-index: 950;
 }
 
@@ -223,8 +221,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: var(--font-size-footer);
-  color: var(--color-text);
+  font-size: 14px;
+  color: #1a1a1a;
   cursor: pointer;
 }
 
@@ -234,13 +232,13 @@ footer {
 
 .footer-item p {
   margin: 4px 0 0;
-  font-size: var(--font-size-footer-label);
+  font-size: 12px;
 }
 
 .footer-item:hover i,
 .footer-item:hover p {
-  text-shadow: var(--hover-shadow-dark);
-  transition: text-shadow var(--transition-fast);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition: text-shadow 0.2s ease;
 }
 
 /* Responsive */
@@ -250,7 +248,7 @@ footer {
   }
 
   .floating-bar {
-    bottom: calc(var(--footer-height) + 8px);
+    bottom: 88px;
     right: 12px;
     padding: 6px;
     gap: 6px;
