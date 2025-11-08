@@ -1,0 +1,37 @@
+:root {
+  --gray-900: #1a1a1a;
+  --gray-800: #2e2e2e;
+  --gray-700: #444444;
+  --gray-600: #666666;
+  --gray-500: #888888;
+  --gray-400: #aaaaaa;
+  --gray-300: #cccccc;
+  --gray-200: #e0e0e0;
+  --gray-100: #f5f5f5;
+  --gray-50:  #fafafa;
+
+  --color-bg: var(--gray-100);
+  --color-text: var(--gray-900);
+  --color-white: #ffffff;
+
+  --color-sidebar: var(--gray-800);
+  --color-sidebar-header: var(--gray-700);
+  --color-toolbar-btn: var(--gray-300);
+  --color-toolbar-btn-hover: var(--gray-400);
+  --color-footer: var(--gray-200);
+
+  --color-border: var(--gray-300);
+  --color-border-dark: var(--gray-500);
+  --hover-shadow-light: 0 0 6px rgba(255, 255, 255, 0.4);
+  --hover-shadow-dark: 0 0 6px rgba(0, 0, 0, 0.2);
+
+  --sidebar-width: 250px;
+  --footer-height: 80px;
+  --font-size-base: 16px;
+  --font-size-small: 13px;
+  --font-size-footer: 14px;
+  --font-size-footer-label: 12px;
+
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}

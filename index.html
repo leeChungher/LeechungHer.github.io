@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>資料表管理系統</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@13.0.0/dist/handsontable.full.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/handsontable@13.0.0/dist/handsontable.full.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sidebar + TopBar + FloatingBar</title>
+  <link rel="stylesheet" href="variables.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <div id="header">
-    <button id="menuBtn">☰</button>
-    <h1>資料表管理系統</h1>
+  <div id="topBar" class="top-bar hidden">
+    <span class="top-bar-title">我的網站</span>
+    <div class="top-bar-right">
+      <button onclick="navigate('home')">首頁</button>
+      <button onclick="navigate('contact')">聯絡</button>
+    </div>
   </div>
 
-  <div id="sidebar">
-    <ul>
-      <li data-page="tables">📋 資料總表</li>
-      <li class="has-submenu">👤 員工管理
-        <ul class="submenu">
-          <li data-page="employee">員工資料表</li>
-        </ul>
-      </li>
-      <li class="has-submenu">📚 基礎資料
-        <ul class="submenu">
-          <li data-page="sex">性別表</li>
-          <li data-page="job">職稱表</li>
-          <li data-page="department">部門表</li>
-        </ul>
-      </li>
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">選單</div>
+    <ul class="sidebar-fixed">
+      <li onclick="navigate('home')"><i class="fas fa-house"></i><span>首頁</span></li>
+      <li onclick="navigate('about')"><i class="fas fa-circle-info"></i><span>關於</span></li>
+      <li onclick="navigate('services')"><i class="fas fa-screwdriver-wrench"></i><span>服務</span></li>
+      <li onclick="navigate('gallery')"><i class="fas fa-images"></i><span>圖庫</span></li>
+      <li onclick="navigate('contact')"><i class="fas fa-phone"></i><span>聯絡</span></li>
     </ul>
+    <ul id="sidebar-dynamic" class="sidebar-dynamic"></ul>
   </div>
 
   <div id="overlay"></div>
+  <div id="floatingBar" class="floating-bar hidden"></div>
 
-  <div id="main">
-    <h2 id="pageTitle">📋 資料表管理</h2>
-    <div id="headerTable"></div>
-    <button id="saveHeaderBtn">💾 儲存欄位設定</button>
-    <div id="dataTable"></div>
+  <div id="main" class="main">
+    <section id="home" class="page active">歡迎來到首頁</section>
+    <section id="about" class="page">關於我們</section>
+    <section id="services" class="page">我們的服務</section>
+    <section id="gallery" class="page">圖庫展示</section>
+    <section id="contact" class="page">聯絡方式</section>
+    <section id="custom" class="page"></section>
+
+    <footer>
+      <div class="footer-icons">
+        <div class="footer-item" onclick="navigate('home')">
+          <i class="fas fa-house"></i><p>首頁</p>
+        </div>
+        <div class="footer-item" onclick="navigate('contact')">
+          <i class="fas fa-phone"></i><p>聯絡</p>
+        </div>
+        <div class="footer-item" onclick="navigate('gallery')">
+          <i class="fas fa-images"></i><p>圖庫</p>
+        </div>
+        <div class="footer-item" onclick="navigate('about')">
+          <i class="fas fa-circle-info"></i><p>關於</p>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <div id="footerBtn">
-    <button id="backBtn" onclick="renderTable('tables')">🔙 返回資料總表</button>
-  </div>
-
-  <!-- JavaScript modules -->
-  <script src="sidebar.js"></script>
-  <script src="datasets.js"></script>
-  <script src="tableviewer.js"></script>
-
-  <!-- 初始化主表 -->
-  <script>
-    window.onload = () => {
-      renderTable('tables');
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
