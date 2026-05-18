@@ -1,23 +1,14 @@
-const CACHE_NAME = 'my-site-cache-v1';
+const CACHE_NAME = 'my-site-cache-v01';
 const urlsToCache = [
-  './',
-  './index.html',
-  './style.css',
-  './variables.css',
-  './script.js',
-  './manifest.json',
+  './favicon.ico',
   './icon-192.png',
   './icon-512.png'
 ];
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
+self.addEventListener('install', () => {
+  console.log('Service Worker installed (no caching)');
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
-  );
+  // 不攔截任何請求，讓瀏覽器直接處理
 });
